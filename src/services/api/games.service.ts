@@ -7,10 +7,11 @@ const GameService = {
   getGames: async (): Promise<IGame[]> => {
     try {
       const response = await axios.get(`${apiUrl}/`)
-      console.log(response)
-      return response.data
+      if (response.status >= 200 && response.status < 300 ) {
+        return response.data
+      }
+      return []
     } catch (error) {
-      console.log(error)
       throw new Error('Error')
     }
   },
@@ -18,7 +19,6 @@ const GameService = {
   getGame: async (id: number): Promise<IGame> => {
     try {
       const response = await axios.get(`${apiUrl}/${id}`)
-      console.log(response)
       return response.data
     } catch (error) {
       throw new Error('Error')
@@ -28,32 +28,26 @@ const GameService = {
   createGame: async (game: Game) => {
     try {
       const response = await axios.post(`${apiUrl}/`, game)
-      console.log(response)
-      return response.data
+      return response
     } catch (error) {
-      console.log(error)
-      throw new Error('Error al crear un usuario en la API')
+      throw new Error('Error')
     }
   },
 
   updateGame: async (game: IGame) => {
     try {
       const response = await axios.put(`${apiUrl}/${game.game_id}`, game)
-      console.log(response)
-      return response.data
+      return response
     } catch (error) {
-      console.log(error)
-      throw new Error('Error al crear un usuario en la API')
+      throw new Error('Error')
     }
   },
 
-  deleteGame: async (id: number): Promise<number> => {
+  deleteGame: async (id: number) => {
     try {
       const response = await axios.delete(`${apiUrl}/${id}`)
-      console.log(response)
-      return response.data
+      return response
     } catch (error) {
-      console.log(error)
       throw new Error('Error')
     }
   }

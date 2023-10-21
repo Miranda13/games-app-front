@@ -4,13 +4,14 @@ import { ITeam } from '../../models/teams.model'
 const apiUrl = 'http://localhost:8080/teams'
 
 const TeamsServices = {
-  getGames: async (): Promise<ITeam[]> => {
+  getTeams: async (): Promise<ITeam[]> => {
     try {
       const response = await axios.get(`${apiUrl}/`)
-      console.log(response)
-      return response.data
+      if (response.status >= 200 && response.status < 300 ) {
+        return response.data
+      }
+      return []
     } catch (error) {
-      console.log(error)
       throw new Error('Error')
     }
   },
