@@ -20,6 +20,7 @@ export interface IGame {
     Team,
     Team
   ];
-  location: ILocation;
+  location?: ILocation;
+  location_id?: number;
   played: boolean;
 }
