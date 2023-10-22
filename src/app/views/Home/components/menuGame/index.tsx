@@ -20,7 +20,11 @@ const objectValues: FilterGames = {
   team: ''
 }
 
-const MenuGame = (props) => {
+type PropsMenuGame = {
+  setActionCreate: (change: boolean) => void
+}
+
+const MenuGame = (props: PropsMenuGame) => {
 
   const { setActionCreate } = props
 

@@ -3,10 +3,11 @@ import { useState, useEffect } from 'react'
 import CardsGame from './components/cardsGame'
 import GameService from '../../../services/api/games.service'
 import MenuGame from './components/menuGame'
+import { IGame } from '../../../models/games.model'
 
 const Home = () => {
 
-  const [games, setGames] = useState([])
+  const [games, setGames] = useState<IGame[]>([])
   const [actionDelete, setActionDelete] = useState(false)
   const [actionUpdate, setActionUpdate] = useState(false)
   const [actionCreate, setActionCreate] = useState(false)
