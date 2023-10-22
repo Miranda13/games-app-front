@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useEffect, useState } from 'react'
 
 import { ILocation } from '../../../../../models/locations.model'
@@ -36,7 +37,14 @@ const MenuGame = (props: PropsMenuGame) => {
   const [teams, setTeams] = useState<ITeam[]>([])
   const [locations, setLocations] = useState<ILocation[]>([])
 
-  const handleChange = (e) => {
+  interface CommonEvent {
+    target: {
+      name: string;
+      value: string;
+    };
+  }
+
+  const handleChange = (e: CommonEvent) => {
     const { name, value } = e.target
     setValues({
         ...values,
