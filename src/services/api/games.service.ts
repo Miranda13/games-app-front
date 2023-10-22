@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { Game, IGame } from '../../models/games.model'
 
-const apiUrl= `${import.meta.env.BASE_URL}/games`
+const apiUrl= `${import.meta.env.VITE_BASE_URL}/games`
 
 const GameService = {
   getGames: async (): Promise<IGame[]> => {
