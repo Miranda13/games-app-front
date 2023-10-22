@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { ILocation } from '../../models/locations.model'
 
-const apiUrl = `${import.meta.env.BASE_URL}/locations`
+const apiUrl = `${import.meta.env.VITE_BASE_URL}/locations`
 
 const LocationsServices = {
   getLocations: async (): Promise<ILocation[]> => {
