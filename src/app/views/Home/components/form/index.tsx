@@ -1,5 +1,5 @@
 import { MapPinIcon } from '@heroicons/react/24/outline'
-import { useEffect, useState } from 'react'
+import { FormEventHandler, useEffect, useState } from 'react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 
 import TeamsServices from '../../../../../services/api/teams.service'
@@ -41,7 +41,7 @@ type PropsForm = {
 
 const Form = (props: PropsForm) => {
 
-  const { action, dataUpdate, setModal, setActionUpdate, setActionCreate } = props
+  const { action, dataUpdate, setModal } = props
 
   const [teams, setTeams ] = useState<ITeam[]>([])
   const [locations, setLocations ] = useState<ILocation[]>([])
@@ -70,7 +70,7 @@ const Form = (props: PropsForm) => {
 
   useEffect(()=>{}, [errors, isLoadingLocations, isLoadingTeams])
 
-  const handleSubmit = (e: React.FormEvent<HTMLInputElement>) => {
+  const handleSubmit: FormEventHandler = (e) => {
     e.preventDefault()
     validateForm(values)
     if(errors.length === 0) {
@@ -94,7 +94,7 @@ const Form = (props: PropsForm) => {
         GameService.createGame(newGame)
           .then((res) => {
             if(res.request.status === 201) {
-              setActionCreate(true)
+              props?.setActionCreate && props.setActionCreate(true)
               setModal(false)
             }
           })
@@ -122,7 +122,7 @@ const Form = (props: PropsForm) => {
         GameService.updateGame(updateGame)
           .then((res) => {
             if(res.request.status === 200) {
-              setActionUpdate(true)
+              props?.setActionUpdate && props.setActionUpdate(true)
               setModal(false)
             }
           })
@@ -130,7 +130,14 @@ const Form = (props: PropsForm) => {
     }
   }
 
-  const handleChange = (e) => {
+  interface CommonEvent {
+    target: {
+      name: string;
+      value: string;
+    };
+  }
+
+  const handleChange = (e: CommonEvent) => {
     const { name, value } = e.target
     setValues({
         ...values,
