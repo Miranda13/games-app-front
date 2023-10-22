@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { ITeam } from '../../models/teams.model'
 
-const apiUrl = 'http://localhost:8080/teams'
+const apiUrl = `${import.meta.env.BASE_URL}/teams`
 
 const TeamsServices = {
   getTeams: async (): Promise<ITeam[]> => {

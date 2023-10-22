@@ -70,7 +70,7 @@ const Form = (props: PropsForm) => {
 
   useEffect(()=>{}, [errors, isLoadingLocations, isLoadingTeams])
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault()
     validateForm(values)
     if(errors.length === 0) {

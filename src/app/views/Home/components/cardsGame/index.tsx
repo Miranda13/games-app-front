@@ -2,7 +2,7 @@ import { IGame } from '../../../../../models/games.model'
 import CardGame from '../cardGame'
 
 type CardsGameProps = {
-  data: [],
+  data: IGame[],
   setActionDelete: (change: boolean) => void,
   setActionUpdate: (change: boolean) => void
 }
