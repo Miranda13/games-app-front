@@ -16,10 +16,10 @@ const Home = () => {
     GameService.getGames()
       .then((data) => {
         setGames(data)
+        setActionCreate(false)
+        setActionDelete(false)
+        setActionUpdate(false)
       })
-    setActionDelete(false)
-    setActionUpdate(false)
-    setActionCreate(false)
   }, [actionDelete, actionUpdate, actionCreate])
 
   return (
