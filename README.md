@@ -32,11 +32,10 @@ The project uses environment variables. To add environment variables create a `.
 
 VITE_BASE_URL=http://localhost:8080
 
-```
+
 - To use ESLint
 ```
 npm run build
-
 ```
 
 ## Project structure
@@ -124,6 +123,7 @@ npm run build
     │
     └───utils
             index.ts
+
 ```
 
 - In services is configurated every request that can make to the server.
