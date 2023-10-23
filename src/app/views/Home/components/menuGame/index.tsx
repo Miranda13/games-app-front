@@ -1,5 +1,4 @@
-/* eslint-disable */
-import { useEffect, useState } from 'react'
+import { FormEventHandler, useEffect, useState } from 'react'
 
 import { ILocation } from '../../../../../models/locations.model'
 import { ITeam } from '../../../../../models/teams.model'
@@ -76,10 +75,14 @@ const MenuGame = (props: PropsMenuGame) => {
     setModalCreate(true)
   }
 
+  const handleSubmit: FormEventHandler = (e) => {
+    e.preventDefault()
+  }
+
   return (
     <>
       <menu className='flex justify-center flex-wrap gap-6 p-6 lg:px-8' aria-label='Global'> 
-        <form className='flex flex-wrap gap-6'>
+        <form onSubmit={handleSubmit} className='flex flex-wrap gap-6'>
           <select 
             name='teamB' 
             id='teamB' 
