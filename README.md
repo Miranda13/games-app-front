@@ -1,27 +1,132 @@
-# React + TypeScript + Vite
+# React-Tailwind-Vite Games App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is designed for the management of football games. It offers UI interface to see football games, editing and deleting.
 
-Currently, two official plugins are available:
+You can access pre-existing data for locations and teams to create new games, and you don't have access to manage them by UI interface, only for games.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+It's deployed with render.com a free hosting, and its URL: https://games-app-pre.onrender.com
 
-## Expanding the ESLint configuration
+You have to wait 5 to 10 minutes while the backend and database services start up and become available; this is done automatically.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Prerequisite
+- Node 18.17.1
 
-- Configure the top-level `parserOptions` property like this:
+## Getting started for local work
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+- Clone the repository
+```
+git clone git@github.com:Miranda13/games-app-front.git
+```
+- Install dependencies
+```
+cd games-app-front
+npm install
+```
+- Run local development server
+```
+npm run dev
+```
+## ENV variables
+
+The project uses environment variables. To add environment variables create a `.env` file in the root folder of the project. This project is built with vite, and vite manages environment variables, you have to create VITE_BASE_URL with backend's url.
+
+VITE_BASE_URL=http://localhost:8080
+
+```
+- To use ESLint
+```
+npm run build
+
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Project structure
+```
+│   .env
+│   .eslintrc.cjs
+│   .gitignore
+│   index.html
+│   package-lock.json
+│   package.json
+│   postcss.config.js
+│   README.md
+│   tailwind.config.js
+│   tsconfig.json
+│   tsconfig.node.json
+│   vite.config.ts
+│
+├───public
+│       vite.svg
+│
+└───src
+    │   index.scss
+    │   index.tsx
+    │
+    ├───app
+    │   │   Router.tsx
+    │   │
+    │   ├───core
+    │   │       index.tsx
+    │   │
+    │   ├───routesConfig
+    │   │       index.tsx
+    │   │       routesConst.ts
+    │   │
+    │   └───views
+    │       ├───Error
+    │       │       index.ts
+    │       │
+    │       └───Home
+    │           │   index.tsx
+    │           │
+    │           └───components
+    │               ├───cardGame
+    │               │       index.tsx
+    │               │
+    │               ├───cardsGame
+    │               │       index.tsx
+    │               │
+    │               ├───deleteGame
+    │               │       index.tsx
+    │               │
+    │               ├───form
+    │               │       index.tsx
+    │               │
+    │               ├───menuGame
+    │               │       index.tsx
+    │               │
+    │               └───teamPresentation
+    │                       index.tsx
+    │
+    ├───assets
+    │       react.svg
+    │
+    ├───components
+    │   ├───Footer
+    │   │       index.tsx
+    │   │
+    │   └───Header
+    │           index.tsx
+    │
+    ├───envs
+    │       vite-env.d.ts
+    │
+    ├───models
+    │       games.model.ts
+    │       locations.model.ts
+    │       scores.model.ts
+    │       teams.model.ts
+    │
+    ├───services
+    │   └───api
+    │           games.service.ts
+    │           locations.service.ts
+    │           teams.service.ts
+    │
+    └───utils
+            index.ts
+
+```
+
+- In services is configurated every request that can make to the server.
+- The Model defines how the data structure of objects is constructed for make resquets to server, and by the way is used for responses.
+- You can find every view with its components.
