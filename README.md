@@ -124,7 +124,6 @@ npm run build
     │
     └───utils
             index.ts
-
 ```
 
 - In services is configurated every request that can make to the server.
